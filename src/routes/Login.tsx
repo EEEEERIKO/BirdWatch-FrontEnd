@@ -23,6 +23,7 @@ export default function Login() {
             <div className="forms-container">
                 <div className="signin-signup">
                     <form action="#" className="sign-in-form">
+                        
                         <h2 className="title">Bird Watch</h2>
                         <div className="input-field">
                             <i className="fas fa-user"></i>
@@ -73,7 +74,7 @@ export default function Login() {
                         <h3>¿Eres nuevo aquí?</h3>
                         <p>¡Crea una cuenta en pocos minutos y empieza a registrar aves!</p>
                         <button className="btn transparent" id="sign-up-btn" onClick={handleSignUpClick}>
-                            Sign up
+                            Crear
                         </button>
                     </div>
                     <img src="src\img\log.svg" className="image" alt="Log In Image" />
@@ -81,9 +82,9 @@ export default function Login() {
                 <div className="panel right-panel">
                     <div className="content">
                         <h3>¿Ya tienes una cuenta?</h3>
-                        <p>Inicia sesión en unos segundos e inicia tu aventura compartiendo aves</p>
+                        <p>Inicia sesión en unos segundos y comienza tu aventura compartiendo aves</p>
                         <button className="btn transparent" id="sign-in-btn" onClick={handleSignInClick}>
-                            Iniciar Sesión
+                            Iniciar
                         </button>
                     </div>
                     <img src="src\img\register.svg" className="image" id="girl" alt="Register Image" />

@@ -1,0 +1,50 @@
+// BirdWatch Database - Documentation
+// Author: Erik Valencia, Roysman Muñoz y Regino 
+// Date: 20/08/24
+// Version: 1.0.0
+
+/*
+ * BirdWatch 
+ * 
+ * Descripción:
+ * BirdWatch es el núcleo del sistema, diseñada para almacenar, gestionar y permitir el acceso a la información sobre avistamientos de aves en Colombia. 
+ * La base de datos se alimenta a través de una plataforma web de participación ciudadana, donde los usuarios pueden registrar avistamientos, subir fotografías, y contribuir al conocimiento científico.
+ * 
+ * Funcionalidades:
+ * 1. Almacenamiento de avistamientos de aves, incluyendo imágenes, ubicación geográfica, y descripciones detalladas.
+ * 2. Gestión de usuarios con diferentes niveles de acceso (ciudadanos, ornitólogos, administradores).
+ * 3. Búsqueda avanzada y filtrado de datos para facilitar el análisis y la consulta de la información.
+ * 4. Respaldo y sincronización automática de datos para asegurar la integridad de la información.
+ * 5. Integración con APIs externas para el intercambio de datos científicos.
+ * 
+ * Requerimientos:
+ * - React.js
+ * - React-Router-Dom
+ * 
+ * Archivos Principales:
+ * - /src/routes              : Carpeta de rutas principales de la web
+ * - /models/Bird.js          : Modelo de datos para aves.
+ * - /controllers/BirdController.js : Controlador para la gestión de avistamientos.
+ * - /routes/birds.js         : Rutas API para avistamientos de aves.
+ * - /middlewares/auth.js     : Middleware para la autenticación de usuarios.
+ * 
+ * Ejemplo de Uso:
+ * - Registro de un avistamiento:
+ *   POST /api/birds
+ *   Request Body: 
+ *   {
+ *     "species": "Tyrannus melancholicus",
+ *     "location": "Medellín, Colombia",
+ *     "image": "data:image/jpeg;base64,...",
+ *     "description": "Avistamiento de un tirano tropical en el Parque Arví."
+ *   }
+ * 
+ * - Búsqueda de avistamientos:
+ *   
+ * 
+ * Notas:
+ * - Asegúrese de que los datos geográficos (ubicación) sean precisos para contribuir efectivamente al análisis de biodiversidad.
+ * - Los datos almacenados son accesibles para ornitólogos y científicos mediante una interfaz de búsqueda avanzada.
+ * 
+ 
+ */
