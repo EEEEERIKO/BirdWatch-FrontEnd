@@ -23,7 +23,8 @@ export default function Login() {
             <div className="forms-container">
                 <div className="signin-signup">
                     <form action="#" className="sign-in-form">
-                        
+
+                        <img src="src\img\logo-birdwatch.svg" alt="logo_BirdWatch" />
                         <h2 className="title">Bird Watch</h2>
                         <div className="input-field">
                             <i className="fas fa-user"></i>
