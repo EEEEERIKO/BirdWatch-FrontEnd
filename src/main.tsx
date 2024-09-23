@@ -6,11 +6,20 @@ import Login from './routes/Login.tsx';
 import Dashboard from './routes/Dashboard.tsx';
 import ProtectedRoute from './routes/ProtectedRoute.tsx';
 import { AuthProvider } from './auth/AuthProvider.tsx';
+import Home from './routes/Home.tsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Login />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/home",
+    element: <Home />,
   },
   {
     path: "/",
