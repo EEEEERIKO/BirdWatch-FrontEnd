@@ -1,5 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
+<<<<<<< Updated upstream
 import './App.css'
+=======
+>>>>>>> Stashed changes
 import Login from './routes/Login'
 import Home from './routes/Home'
 
