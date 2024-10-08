@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom'
-import * as Unicons from '@iconscout/react-unicons';
 import './App.css'
 import Login from './routes/Login'
 import Home from './routes/Home'

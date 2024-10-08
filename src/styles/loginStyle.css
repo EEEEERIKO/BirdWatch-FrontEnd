@@ -1,21 +1,15 @@
-@import url("https://fonts.googhttps://fonts.googleapis.com/css2?family=Jockey+One&display=swapleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
-
-
-* {
+*  {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-
-body,
-
-
-input {
     font-family: "Poppins", sans-serif;
 }
 
-.container {
+.conttainer input {
+    font-family: "Poppins", sans-serif;
+}
+
+.conttainer {
     position: relative;
     width: 100%;
     background-color: #fff;
@@ -23,13 +17,13 @@ input {
     overflow: hidden;
 }
 
-.jockey-one-regular {
+.conttainer .jockey-one-regular {
     font-family: "Jockey One", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 
-.forms-container {
+.conttainer .forms-conttainer {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -37,7 +31,7 @@ input {
     left: 0;
 }
 
-.signin-signup {
+.conttainer .signin-signup {
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -49,7 +43,7 @@ input {
     z-index: 5;
 }
 
-form {
+.conttainer form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,16 +55,16 @@ form {
     grid-row: 1 / 2;
 }
 
-form.sign-up-form {
+.conttainer form.sign-up-form {
     opacity: 0;
     z-index: 1;
 }
 
-form.sign-in-form {
+.conttainer form.sign-in-form {
     z-index: 2;
 }
 
-.title {
+.conttainer .title {
     font-size: 2.2rem;
     color: #444;
     margin-bottom: 10px;
@@ -89,7 +83,7 @@ form.sign-in-form {
     position: relative;
 }
 
-.input-field i {
+.conttainer .input-field i {
     text-align: center;
     line-height: 55px;
     color: #acacac;
@@ -97,7 +91,7 @@ form.sign-in-form {
     font-size: 1.1rem;
 }
 
-.input-field input {
+.conttainer .input-field input {
     background: none;
     outline: none;
     border: none;
@@ -107,7 +101,7 @@ form.sign-in-form {
     color: #333;
 }
 
-.input-field input::placeholder {
+.conttainer .input-field input::placeholder {
     color: #aaa;
     font-weight: 500;
 }
@@ -115,7 +109,7 @@ form.sign-in-form {
 
 
 
-.btn {
+.conttainer .btn {
     width: 150px;
     background-color: #1c9711;
     border: none;
@@ -131,7 +125,7 @@ form.sign-in-form {
 }
 
 
-.panels-container {
+.conttainer .panels-conttainer {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -141,7 +135,7 @@ form.sign-in-form {
     grid-template-columns: repeat(2, 1fr);
 }
 
-.container:before {
+.conttainer:before {
     content: "";
     position: absolute;
     height: 2000px;
@@ -155,7 +149,7 @@ form.sign-in-form {
     z-index: 6;
 }
 
-.image {
+.conttainer .image {
     width: 100%;
     transition: transform 1.1s ease-in-out;
     transition-delay: 0.4s;
@@ -163,7 +157,8 @@ form.sign-in-form {
 }
 
 
-.panel {
+
+.conttainer .panel {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -172,34 +167,34 @@ form.sign-in-form {
     z-index: 6;
 }
 
-.left-panel {
+.conttainer .left-panel {
     pointer-events: all;
     padding: 3rem 17% 2rem 12%;
 }
 
-.right-panel {
+.conttainer .right-panel {
     pointer-events: none;
     padding: 3rem 12% 1rem 00%;
 }
 
-.panel .content {
+.conttainer .panel .content {
     color: #fff;
     transition: transform 0.9s ease-in-out;
     transition-delay: 0.6s;
 }
 
-.panel h3 {
+.conttainer .panel h3 {
     font-weight: 600;
     line-height: 1;
     font-size: 1.5rem;
 }
 
-.panel p {
+.conttainer .panel p {
     font-size: 0.95rem;
     padding: 0.7rem 0;
 }
 
-.btn.transparent {
+.conttainer .btn.transparent {
     margin: 0;
     background: none;
     border: 2px solid #fff;
@@ -209,76 +204,76 @@ form.sign-in-form {
     font-size: 0.8rem;
 }
 
-.right-panel .image,
-.right-panel .content {
+.conttainer .right-panel .image,
+.conttainer .right-panel .content {
     transform: translateX(900px);
 }
 
 /* ANIMATION */
 
-.container.sign-up-mode:before {
+.conttainer.sign-up-mode:before {
     transform: translate(100%, -50%);
     right: 52%;
 }
 
-.container.sign-up-mode .left-panel .image,
-.container.sign-up-mode .left-panel .content {
+.conttainer.sign-up-mode .left-panel .image,
+.conttainer.sign-up-mode .left-panel .content {
     transform: translateX(-800px);
 }
 
-.container.sign-up-mode .signin-signup {
+.conttainer.sign-up-mode .signin-signup {
     left: 25%;
 }
 
-.container.sign-up-mode form.sign-up-form {
+.conttainer.sign-up-mode form.sign-up-form {
     opacity: 1;
     z-index: 2;
 }
 
-.container.sign-up-mode form.sign-in-form {
+.conttainer.sign-up-mode form.sign-in-form {
     opacity: 0;
     z-index: 1;
 }
 
-.container.sign-up-mode .right-panel .image,
-.container.sign-up-mode .right-panel .content {
+.conttainer.sign-up-mode .right-panel .image,
+.conttainer.sign-up-mode .right-panel .content {
     transform: translateX(0%);
 }
 
-.container.sign-up-mode .left-panel {
+.conttainer.sign-up-mode .left-panel {
     pointer-events: none;
 }
 
-.container.sign-up-mode .right-panel {
+.conttainer.sign-up-mode .right-panel {
     pointer-events: all;
 }
 
 @media (max-width: 1024px) {
-    .container {
+    .conttainer {
         min-height: 800px;
         height: 100vh;
     }
 
     
 
-    .signin-signup {
+    .conttainer .signin-signup {
         width: 100%;
         top: 95%;
         transform: translate(-50%, -100%);
         transition: 1s 0.8s ease-in-out;
     }
 
-    .signin-signup,
-    .container.sign-up-mode .signin-signup {
+    .conttainer .signin-signup,
+    .conttainer.sign-up-mode .signin-signup {
         left: 50%;
     }
 
-    .panels-container {
+    .conttainer .panels-conttainer {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 2fr 1fr;
     }
 
-    .panel {
+    .conttainer .panel {
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
@@ -286,45 +281,45 @@ form.sign-in-form {
         grid-column: 1 / 2;
     }
 
-    .right-panel {
+    .conttainer .right-panel {
         grid-row: 3 / 4;
     }
 
-    .left-panel {
+    .conttainer .left-panel {
         grid-row: 1 / 2;
 
     }
 
-    .image {
+    .conttainer .image {
         width: 60%;
         transition: transform 0.9s ease-in-out;
         transition-delay: 0.6s;
     }
 
-    .panel .content {
+    .conttainer .panel .content {
         padding-right: 0%;
         transition: transform 0.9s ease-in-out;
         transition-delay: 0.8s;
     }
 
-    .panel h3 {
+    .conttainer .panel h3 {
         font-size: 2.6rem;
     }
 
-    .panel p {
+    .conttainer .panel p {
         font-size: 0.9rem;
         padding: 0.5rem 0;
         
     }
 
-    .btn.transparent {
+    .conttainer .btn.transparent {
         width: 160px;
         height: 45px;
         margin-bottom: 90px;
         font-size: 1.2rem;
     }
 
-    .container:before {
+    .conttainer:before {
         width: 1500px;
         height: 1500px;
         transform: translateX(-50%);
@@ -335,67 +330,67 @@ form.sign-in-form {
         transition: 2s ease-in-out;
     }
 
-    .container.sign-up-mode:before {
+    .conttainer.sign-up-mode:before {
         transform: translate(-50%, 101%);
         bottom: 42%;
         right: initial;
     }
 
-    .container.sign-up-mode .left-panel .image,
-    .container.sign-up-mode .left-panel .content {
+    .conttainer.sign-up-mode .left-panel .image,
+    .conttainer.sign-up-mode .left-panel .content {
         transform: translateY(-520px);
     }
 
-    .container.sign-up-mode .right-panel .image,
-    .container.sign-up-mode .right-panel .content {
+    .conttainer.sign-up-mode .right-panel .image,
+    .conttainer.sign-up-mode .right-panel .content {
         transform: translateY(70px);
     }
 
-    .right-panel .image,
-    .right-panel .content {
+    .conttainer .right-panel .image,
+    .conttainer .right-panel .content {
         transform: translateY(520px);
     }
 
-    .container.sign-up-mode .signin-signup {
+    .conttainer.sign-up-mode .signin-signup {
         top: 1%;
         transform: translate(-50%, 0);
     }
 }
 
 @media (max-width: 570px) {
-    form {
+    .conttainer form {
         padding: 0 1.5rem;
     }
 
-    .panel h3 {
+    .conttainer .panel h3 {
         font-size: 1.4rem;
     }
 
-    .panel p {
+    .conttainer .panel p {
         font-size: 0.9rem;
         padding: 0.5rem 0;
         
     }
 
 
-    .image {
+    .conttainer .image {
         display: none;
     }
 
-    .panel .content {
+    .conttainer .panel .content {
         padding: 0.5rem 1rem;
     }
 
-    .container {
+    .conttainer {
         padding: 1.5rem;
     }
 
-    .container:before {
+    .conttainer:before {
         bottom: 72%;
         left: 50%;
     }
 
-    .container.sign-up-mode:before {
+    .conttainer.sign-up-mode:before {
         bottom: 28%;
         left: 50%;
     }

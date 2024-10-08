@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import "../styles/style.css";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import '../styles/loginStyle.css';
 
 export default function Login() {
 
@@ -30,13 +30,13 @@ export default function Login() {
             return; // Detiene la ejecución si las contraseñas no coinciden
         }
 
-        const data = {
+        /*const data = {
             user: user,
             name: name,
             lastname: secondName,
             email: email,
             password: password
-        };
+        };*/
 
         setName(name);
         setSecondName(secondName);
@@ -56,27 +56,28 @@ export default function Login() {
 
 
     // Referencias a los elementos DOM
-    const containerRef = useRef<HTMLDivElement>(null);
+    const conttainerRef = useRef<HTMLDivElement>(null);
 
     // Funciones para manejar los clics en los botones
     const handleSignUpClick = () => {
-        if (containerRef.current) {
-            containerRef.current.classList.add("sign-up-mode");
+        if (conttainerRef.current) {
+            conttainerRef.current.classList.add("sign-up-mode");
         }
     };
 
     const handleSignInClick = () => {
-        if (containerRef.current) {
-            containerRef.current.classList.remove("sign-up-mode");
+        if (conttainerRef.current) {
+            conttainerRef.current.classList.remove("sign-up-mode");
         }
     };
 
 
     const loginService = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(email == confEmail && password == confPassword){
+        if("1" == confEmail && "1" == confPassword){
             console.log("Inicio de sesion exitoso");
-                navigate("/home")
+            navigate("/home");
+                
         }else{
             Swal.fire({
                 icon: 'error',
@@ -87,12 +88,12 @@ export default function Login() {
         }
     }
     return (
-        <div className="container" ref={containerRef}>
-            <div className="forms-container">
+        <div className="conttainer" ref={conttainerRef}>
+            <div className="forms-conttainer">
                 <div className="signin-signup">
                     <form action="#" className="sign-in-form" onSubmit={loginService}>
 
-                        <img src="src\img\logo-birdwatch.svg" alt="logo_BirdWatch" />
+                        <img className="img-logo" src="src\img\logo-birdwatch.svg" alt="logo_BirdWatch" />
                         <h2 className="title">Bird Watch</h2>
                         <div className="input-field">
                             <i className="fas fa-user"></i>
@@ -137,7 +138,7 @@ export default function Login() {
                 </div>
             </div>
 
-            <div className="panels-container">
+            <div className="panels-conttainer">
                 <div className="panel left-panel">
                     <div className="content">
                         <h3>¿Eres nuevo aquí?</h3>
