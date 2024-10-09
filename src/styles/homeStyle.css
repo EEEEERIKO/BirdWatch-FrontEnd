@@ -116,6 +116,7 @@ body .home {
     color: var(--color-gray)
 }
 
+
 /* NAV BAR */
 .home nav {
     width: 100%;
@@ -189,25 +190,34 @@ body .home {
 
 .home main .container {
     display: grid;
-    grid-template-columns: 18vw auto 20vw;
-    column-gap: 2rem;
+    padding-left: 19%;
+    grid-template-columns:  auto 18vw;
+    column-gap: 5%;
     position: relative;
 }
 
+
+
 /*============== LEFT =============*/
+
+
 .home main .container .left {
-
-    position: sticky;
-    top: 0;
-    height: 100vh;
-
+    position: fixed !important;
+    top: 0; /* Ajusta esto según sea necesario */
+     /* Ajusta esto para que esté en la parte izquierda */
+    height: 100vh; /* Asegura que ocupe toda la altura */
     margin-top: 1rem;
-
 }
+
+
+
 
 .home .left {
     position: sticky;
+    padding-top: 70px;
+    width: 208px ;
 }
+
 
 .home main .container .left .profile {
     padding: var(--card-padding);
@@ -217,6 +227,7 @@ body .home {
     align-items: center;
     column-gap: 1rem;
     width: 100%;
+    
 }
 
 
@@ -328,6 +339,7 @@ body .home {
     box-shadow: 0 0 2rem hsl(var(--color-primary), 75%, 60% 25%);
     z-index: 8;
     display: none;
+
 }
 
 .left .notification-popup::before {
@@ -339,6 +351,7 @@ body .home {
     position: absolute;
     left: -0.6rem;
     transform: rotate(45deg);
+    box-shadow: 0 0 2rem hsl(var(--color-primary), 75%, 60% 25%);
 }
 
 
@@ -542,6 +555,7 @@ body .home {
     place-items: center;
     font-size: 0.9rem;
     display: none;
+   
 
 }
 
@@ -581,7 +595,7 @@ body .home {
 /*FONT SIZES*/
 
 .customize-theme .font-size {
-    margin-top: 5rem;
+    margin-top: 2rem;
 }
 
 .customize-theme .font-size>div {
@@ -678,6 +692,7 @@ body .home {
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
+    overflow: hidden;
 }
 
 .customize-theme .choose-bg>div {
@@ -732,13 +747,16 @@ MEDIA QUERIES FOR SMALL LAPTOPS AND BIG TABLETS
     }
 
     .home main .container {
-        grid-template-columns: 5rem auto 30vw;
+        grid-template-columns:  auto 20vw;
+        padding-left: 10vw;
         gap: 1rem;
     }
 
-    .home .left {
+    .home main .container .left {
         width: 5rem;
         z-index: 5;
+        position: sticky;
+        
     }
 
     .home main .container .left .profile {
@@ -767,6 +785,7 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
         display: none;
     }
 
+    
     .home main .container {
         grid-template-columns: 0 auto 5rem;
         gap: 0;
@@ -775,6 +794,7 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
     .home main .container .left {
         grid-template-columns: 3/4;
         position: fixed;
+        top: 50px;
         bottom: 0;
         right: 0;
     }
@@ -812,8 +832,26 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
     }
 
 
+    .customize-theme .choose-bg {
+        display: flex; /* Asegúrate de que el contenedor use flexbox */
+    flex-direction: column; /* Dispone los elementos en una columna */
+    gap: 1rem; /* Espacio entre los elementos */
+    width: 50%; /* Ancho del contenedor */
+    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: center; /* Centra los elementos verticalmente */
+    margin: 0 auto;
+
+    }
 
 
 
 
+}
+
+
+/* Media query para dispositivos móviles */
+@media (max-width: 600px) {
+    .customize-theme .font-size {
+        margin-top: 1rem; /* Ajusta el margen superior para pantallas pequeñas */
+    }
 }
