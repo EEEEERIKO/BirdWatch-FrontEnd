@@ -1,8 +1,329 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import '../styles/homeStyle.css'; // Asegúrate de que tu archivo CSS esté en la misma ruta
 
 
 export default function Home() {
+    useEffect(() => {
+        // SIDEBAR
+        const menuItems: NodeListOf<Element> = document.querySelectorAll('.menu-item');
+
+        // THEME
+        const theme: Element | null = document.querySelector('#theme');
+        const themeModal: Element | null = document.querySelector('.customize-theme');
+        const fontSizes: NodeListOf<Element> = document.querySelectorAll('.choose-size span');
+        const root: HTMLElement | null = document.querySelector(':root') as HTMLElement;
+        const colorPalette: NodeListOf<Element> = document.querySelectorAll('.choose-color span');
+        const Bg1: Element | null = document.querySelector('.bg-1');
+        const Bg2: Element | null = document.querySelector('.bg-2');
+        const Bg3: Element | null = document.querySelector('.bg-3');
+
+        // remove active class from all menu items
+        const changeActiveItem = (): void => {
+            menuItems.forEach(item => {
+                (item as HTMLElement).classList.remove('active');
+            });
+        };
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                changeActiveItem();
+                (item as HTMLElement).classList.add('active');
+                if ((item as HTMLElement).id !== 'notifications') {
+                    (document.querySelector('.notification-popup') as HTMLElement)!.style.display = 'none';
+                } else {
+                    (document.querySelector('.notification-popup') as HTMLElement)!.style.display = 'block';
+                    (document.querySelector('#notifications .notification-count') as HTMLElement)!.style.display = 'none';
+                }
+            });
+        });
+
+        // THEME CUSTOMIZATION
+        // open modal
+        const openThemeModal = (): void => {
+            (themeModal as HTMLElement).style.display = 'grid';
+        };
+
+        // close modal
+        const closeModal = (e: Event): void => {
+            if ((e.target as Element).classList.contains('customize-theme')) {
+                (themeModal as HTMLElement).style.display = 'none';
+            }
+        };
+        themeModal?.addEventListener('click', closeModal);
+        theme?.addEventListener('click', openThemeModal);
+
+        // FONT
+        const removeSizeSelector = (): void => {
+            fontSizes.forEach(size => {
+                (size as HTMLElement).classList.remove('active');
+            });
+        };
+
+        fontSizes.forEach(size => {
+            size.addEventListener('click', () => {
+                removeSizeSelector();
+                let fontSize: string = '16px'; // Default font size
+                (size as HTMLElement).classList.toggle('active');
+
+                if ((size as HTMLElement).classList.contains('font-size-1')) {
+                    fontSize = '10px';
+                    root?.style.setProperty('----sticky-top-left', '5.4rem');
+                    root?.style.setProperty('----sticky-top-right', '5.4rem');
+                } else if ((size as HTMLElement).classList.contains('font-size-2')) {
+                    fontSize = '13px';
+                    root?.style.setProperty('----sticky-top-left', '5.4rem');
+                    root?.style.setProperty('----sticky-top-right', '-7rem');
+                } else if ((size as HTMLElement).classList.contains('font-size-3')) {
+                    fontSize = '16px';
+                    root?.style.setProperty('----sticky-top-left', '-2rem');
+                    root?.style.setProperty('----sticky-top-right', '-17rem');
+                } else if ((size as HTMLElement).classList.contains('font-size-4')) {
+                    fontSize = '19px';
+                    root?.style.setProperty('----sticky-top-left', '-5rem');
+                    root?.style.setProperty('----sticky-top-right', '-25rem');
+                } else if ((size as HTMLElement).classList.contains('font-size-5')) {
+                    fontSize = '22px';
+                    root?.style.setProperty('----sticky-top-left', '-12rem');
+                    root?.style.setProperty('----sticky-top-right', '-33rem');
+                }
+
+                // change font size of the root html element
+                document.querySelector('html')!.style.fontSize = fontSize;
+            });
+        });
+
+        // THEME COLORS
+        const changeActiveColorClass = (): void => {
+            colorPalette.forEach((color) => {
+                color.classList.remove('active');
+            });
+        };
+
+        colorPalette.forEach((color) => {
+            (color as HTMLElement).addEventListener('click', () => {
+                changeActiveColorClass();
+                let primaryHue: number = 0; // Initialize with a default value
+                (color as HTMLElement).classList.toggle('active');
+                if ((color as HTMLElement).classList.contains('color-1')) {
+                    primaryHue = 120;
+                } else if ((color as HTMLElement).classList.contains('color-2')) {
+                    primaryHue = 52;
+                } else if ((color as HTMLElement).classList.contains('color-3')) {
+                    primaryHue = 352;
+                } else if ((color as HTMLElement).classList.contains('color-4')) {
+                    primaryHue = 152;
+                } else if ((color as HTMLElement).classList.contains('color-5')) {
+                    primaryHue = 202;
+                }
+
+                (root as HTMLElement).style.setProperty('--primary-color-hue', primaryHue.toString());
+            });
+        });
+
+        // BACKGROUND COLORS
+        let whiteColorLightness: string;
+        let lightColorLightness: string;
+        let darkColorLightness: string;
+
+        // changes background color
+        const changeBG = (): void => {
+            (root as HTMLElement).style.setProperty('--white-color-lightness', whiteColorLightness);
+            (root as HTMLElement).style.setProperty('--light-color-lightness', lightColorLightness);
+            (root as HTMLElement).style.setProperty('--dark-color-lightness', darkColorLightness);
+        };
+
+        Bg1?.addEventListener('click', () => {
+            whiteColorLightness = '100%';
+            lightColorLightness = '95%';
+            darkColorLightness = '17%';
+
+            Bg2?.classList.remove('active');
+            Bg1?.classList.add('active');
+            Bg3?.classList.remove('active');
+            changeBG();
+        });
+
+        Bg2?.addEventListener('click', () => {
+            whiteColorLightness = '20%';
+            lightColorLightness = '15%';
+            darkColorLightness = '95%';
+            Bg2?.classList.add('active');
+            Bg1?.classList.remove('active');
+            Bg3?.classList.remove('active');
+            changeBG();
+        });
+
+        Bg3?.addEventListener('click', () => {
+            whiteColorLightness = '10%';
+            lightColorLightness = '0%';
+            darkColorLightness = '95%';
+            Bg2?.classList.remove('active');
+            Bg1?.classList.remove('active');
+            Bg3?.classList.add('active');
+            changeBG();
+        });
+
+    }, []);
+        // SIDEBAR
+        const menuItems: NodeListOf<Element> = document.querySelectorAll('.menu-item');
+
+        // THEME
+        const theme: Element | null = document.querySelector('#theme');
+        const themeModal: Element | null = document.querySelector('.customize-theme');
+        const fontSizes: NodeListOf<Element> = document.querySelectorAll('.choose-size span');
+        const root: HTMLElement | null = document.querySelector(':root') as HTMLElement;
+        const colorPalette: NodeListOf<Element> = document.querySelectorAll('.choose-color span');
+        const Bg1: Element | null = document.querySelector('.bg-1');
+        const Bg2: Element | null = document.querySelector('.bg-2');
+        const Bg3: Element | null = document.querySelector('.bg-3');
+
+        // remove active class from all menu items
+        const changeActiveItem = (): void => {
+            menuItems.forEach(item => {
+                (item as HTMLElement).classList.remove('active');
+            });
+        };
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                changeActiveItem();
+                (item as HTMLElement).classList.add('active');
+                if ((item as HTMLElement).id !== 'notifications') {
+                    (document.querySelector('.notification-popup') as HTMLElement)!.style.display = 'none';
+                } else {
+                    (document.querySelector('.notification-popup') as HTMLElement)!.style.display = 'block';
+                    (document.querySelector('#notifications .notification-count') as HTMLElement)!.style.display = 'none';
+                }
+            });
+        });
+
+        // THEME CUSTOMIZATION
+        // open modal
+        const openThemeModal = (): void => {
+            (themeModal as HTMLElement).style.display = 'grid';
+        };
+
+        // close modal
+        const closeModal = (e: Event): void => {
+            if ((e.target as Element).classList.contains('customize-theme')) {
+                (themeModal as HTMLElement).style.display = 'none';
+            }
+        };
+        themeModal?.addEventListener('click', closeModal);
+        theme?.addEventListener('click', openThemeModal);
+
+        // FONT
+        const removeSizeSelector = (): void => {
+            fontSizes.forEach(size => {
+                (size as HTMLElement).classList.remove('active');
+            });
+        };
+
+        fontSizes.forEach(size => {
+            size.addEventListener('click', () => {
+                removeSizeSelector();
+                let fontSize: string = '16px'; // Default font size
+                (size as HTMLElement).classList.toggle('active');
+
+                if ((size as HTMLElement).classList.contains('font-size-1')) {
+                    fontSize = '10px';
+                    root?.style.setProperty('----sticky-top-left', '5.4rem');
+                    root?.style.setProperty('----sticky-top-right', '5.4rem');
+                } else if ((size as HTMLElement).classList.contains('font-size-2')) {
+                    fontSize = '13px';
+                    root?.style.setProperty('----sticky-top-left', '5.4rem');
+                    root?.style.setProperty('----sticky-top-right', '-7rem');
+                } else if ((size as HTMLElement).classList.contains('font-size-3')) {
+                    fontSize = '16px';
+                    root?.style.setProperty('----sticky-top-left', '-2rem');
+                    root?.style.setProperty('----sticky-top-right', '-17rem');
+                } else if ((size as HTMLElement).classList.contains('font-size-4')) {
+                    fontSize = '19px';
+                    root?.style.setProperty('----sticky-top-left', '-5rem');
+                    root?.style.setProperty('----sticky-top-right', '-25rem');
+                } else if ((size as HTMLElement).classList.contains('font-size-5')) {
+                    fontSize = '22px';
+                    root?.style.setProperty('----sticky-top-left', '-12rem');
+                    root?.style.setProperty('----sticky-top-right', '-33rem');
+                }
+
+                // change font size of the root html element
+                document.querySelector('html')!.style.fontSize = fontSize;
+            });
+        });
+
+        // THEME COLORS
+        const changeActiveColorClass = (): void => {
+            colorPalette.forEach((color) => {
+                color.classList.remove('active');
+            });
+        };
+
+        colorPalette.forEach((color) => {
+            (color as HTMLElement).addEventListener('click', () => {
+                changeActiveColorClass();
+                let primaryHue: number = 0; // Initialize with a default value
+                (color as HTMLElement).classList.toggle('active');
+                if ((color as HTMLElement).classList.contains('color-1')) {
+                    primaryHue = 120;
+                } else if ((color as HTMLElement).classList.contains('color-2')) {
+                    primaryHue = 52;
+                } else if ((color as HTMLElement).classList.contains('color-3')) {
+                    primaryHue = 352;
+                } else if ((color as HTMLElement).classList.contains('color-4')) {
+                    primaryHue = 152;
+                } else if ((color as HTMLElement).classList.contains('color-5')) {
+                    primaryHue = 202;
+                }
+
+                (root as HTMLElement).style.setProperty('--primary-color-hue', primaryHue.toString());
+            });
+        });
+
+        // BACKGROUND COLORS
+        let whiteColorLightness: string;
+        let lightColorLightness: string;
+        let darkColorLightness: string;
+
+        // changes background color
+        const changeBG = (): void => {
+            (root as HTMLElement).style.setProperty('--white-color-lightness', whiteColorLightness);
+            (root as HTMLElement).style.setProperty('--light-color-lightness', lightColorLightness);
+            (root as HTMLElement).style.setProperty('--dark-color-lightness', darkColorLightness);
+        };
+
+        Bg1?.addEventListener('click', () => {
+            whiteColorLightness = '100%';
+            lightColorLightness = '95%';
+            darkColorLightness = '17%';
+
+            Bg2?.classList.remove('active');
+            Bg1?.classList.add('active');
+            Bg3?.classList.remove('active');
+            changeBG();
+        });
+
+        Bg2?.addEventListener('click', () => {
+            whiteColorLightness = '20%';
+            lightColorLightness = '15%';
+            darkColorLightness = '95%';
+            Bg2?.classList.add('active');
+            Bg1?.classList.remove('active');
+            Bg3?.classList.remove('active');
+            changeBG();
+        });
+
+        Bg3?.addEventListener('click', () => {
+            whiteColorLightness = '10%';
+            lightColorLightness = '0%';
+            darkColorLightness = '95%';
+            Bg2?.classList.remove('active');
+            Bg1?.classList.remove('active');
+            Bg3?.classList.add('active');
+            changeBG();
+        });
+
+
 
     
     return (
@@ -164,7 +485,7 @@ export default function Home() {
                     <div className="customize-theme">
                         <div className="card">
                             <h2>Customiza a tu gusto</h2>
-                            <p className="text-muted">Maneja tu tamaño de funete, color, y fondo</p>
+                            <p className="text-muted">Maneja tu tamaño de fuene, color, y fondo</p>
 
 
                             <div className="font-size">
@@ -464,10 +785,13 @@ export default function Home() {
                             <small className="watch-more">Ver más...</small>
                         </div>
                     </div>
-
+                    
                 </div>
+                
+
 
             </main>
+            
         </div>
     );
 }
